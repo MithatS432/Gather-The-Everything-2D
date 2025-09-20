@@ -11,6 +11,10 @@ public class CanvasManager : MonoBehaviour
     {
         SceneManager.LoadScene("Options");
     }
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
     public void ExitGame() =>
 
 #if UNITY_EDITOR
@@ -18,5 +22,4 @@ public class CanvasManager : MonoBehaviour
 #else
         Application.Quit();
 #endif
-
 }
