@@ -22,4 +22,13 @@ public class CanvasManager : MonoBehaviour
 #else
         Application.Quit();
 #endif
+
+    public void StopGame()
+    {
+        Time.timeScale = 0f;
+    }
+    public void ResumeGame()
+    {
+        Time.timeScale = 1f;
+    }
 }
