@@ -3,17 +3,29 @@ using UnityEngine;
 public class Fruits : MonoBehaviour
 {
     public int point;
-    public AudioSource eatSound;
+    public AudioClip eatSound;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Circle"))
         {
-            collision.GetComponent<Player>().GetScore(point);
-            if (eatSound != null)
+            Player player = collision.GetComponentInParent<Player>();
+
+            if (player != null)
             {
-                eatSound.Play();
+                player.GetScore(point);
+
+                if (eatSound != null)
+                {
+                    AudioSource.PlayClipAtPoint(eatSound, transform.position);
+                }
+
+                Destroy(gameObject);
             }
-            Destroy(gameObject);
+            else
+            {
+                Debug.LogWarning("Player component bulunamadı! Çarpışan obje: " + collision.name);
+            }
         }
     }
 }
