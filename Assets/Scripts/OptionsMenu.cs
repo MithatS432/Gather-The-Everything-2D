@@ -7,18 +7,24 @@ public class OptionsMenu : MonoBehaviour
     public AudioMixer mixer;
     public Slider musicSlider;
 
-    void Start()
+    void Awake()
     {
-        musicSlider.minValue = 0.0001f;
-        musicSlider.maxValue = 1f;
-        musicSlider.value = 1f;
+        if (musicSlider != null)
+        {
+            musicSlider.minValue = 0.0001f;
+            musicSlider.maxValue = 1f;
+            musicSlider.value = 1f;
 
-        musicSlider.onValueChanged.AddListener(SetMusicVolume);
+            musicSlider.onValueChanged.AddListener(SetMusicVolume);
+        }
     }
 
     public void SetMusicVolume(float value)
     {
-        float dB = Mathf.Log10(value) * 20f;
-        mixer.SetFloat("MusicVolume", dB);
+        if (mixer != null)
+        {
+            float dB = Mathf.Log10(value) * 20f;
+            mixer.SetFloat("MusicVolume", dB);
+        }
     }
 }

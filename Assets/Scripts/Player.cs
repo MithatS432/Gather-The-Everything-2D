@@ -5,10 +5,15 @@ public class Player : MonoBehaviour
 {
     private Rigidbody2D circle;
     public TextMeshProUGUI timerText;
+    public TextMeshProUGUI scoreText;
     private float remainingTime = 60f;
     public int fruitsCollected = 10;
     public int newFruitsCollected;
     public int score;
+
+    public GameObject biggercircle;
+    public AudioClip biggerSound;
+    public Camera mainCamera;
     [SerializeField] private float speed;
     void Start()
     {
@@ -39,12 +44,27 @@ public class Player : MonoBehaviour
     public void GetScore(int amount)
     {
         score += amount;
+        scoreText.text = "Score: " + score.ToString();
         fruitsCollected--;
         if (fruitsCollected <= 0)
         {
             newFruitsCollected += 5;
             speed += 1;
             fruitsCollected = newFruitsCollected;
+        }
+    }
+    public void GetBigger()
+    {
+        if (fruitsCollected <= 0)
+        {
+            GameObject biggerCircleInstance = Instantiate(biggercircle, transform.position, Quaternion.identity);
+            if (biggerSound != null)
+            {
+                AudioSource.PlayClipAtPoint(biggerSound, transform.position);
+            }
+            transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
+            mainCamera.orthographicSize += 0.5f;
+            Destroy(biggerCircleInstance, 0.5f);
         }
     }
 }
