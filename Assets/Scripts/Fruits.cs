@@ -4,6 +4,7 @@ public class Fruits : MonoBehaviour
 {
     public int point;
     public AudioClip eatSound;
+    public GameObject fruitEffect;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -20,11 +21,13 @@ public class Fruits : MonoBehaviour
                     AudioSource.PlayClipAtPoint(eatSound, transform.position);
                 }
 
+                if (fruitEffect != null)
+                {
+                    GameObject effect = Instantiate(fruitEffect, transform.position, Quaternion.identity);
+                    Destroy(effect, 1f);
+                }
+
                 Destroy(gameObject);
-            }
-            else
-            {
-                Debug.LogWarning("Player component bulunamadı! Çarpışan obje: " + collision.name);
             }
         }
     }

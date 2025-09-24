@@ -17,6 +17,10 @@ public class Player : MonoBehaviour
     public int newFruitsCollected;
     public Button restartButton;
     public int score;
+    public int leftFruits = 500;
+    public AudioClip winsound;
+    public GameObject winEffect;
+    public TextMeshProUGUI leftFruitsText;
 
     public GameObject biggercircle;
     public AudioClip biggerSound;
@@ -24,6 +28,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float speed;
 
     private bool isGameOver = false;
+    private bool hasWon = false;
     private int speedBoostDuration = 3;
 
     void Start()
@@ -51,6 +56,10 @@ public class Player : MonoBehaviour
         {
             BoostSpeed();
         }
+        if (leftFruits <= 0 && !hasWon)
+        {
+            TriggerWin();
+        }
     }
 
     private void FixedUpdate()
@@ -65,7 +74,9 @@ public class Player : MonoBehaviour
         score += amount;
         scoreText.text = "Score:" + score.ToString();
         fruitsCollected--;
+        leftFruits--;
         fruitsText.text = "" + fruitsCollected.ToString();
+        leftFruitsText.text = "Left:" + leftFruits.ToString();
         if (fruitsCollected <= 0)
         {
             remainingTime = 60f;
@@ -78,7 +89,7 @@ public class Player : MonoBehaviour
     }
     public void GetBigger()
     {
-        float growthFactor = 0.2f;
+        float growthFactor = 0.1f;
         transform.localScale += new Vector3(growthFactor, growthFactor, growthFactor);
 
         mainCamera.orthographicSize += growthFactor * 0.8f;
@@ -117,5 +128,34 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(3f);
         speed = originalSpeed;
         isSpeedBoosted = false;
+    }
+    void TriggerWin()
+    {
+        hasWon = true;
+
+        if (winsound != null)
+            AudioSource.PlayClipAtPoint(winsound, transform.position);
+
+        if (winEffect != null)
+        {
+            GameObject effect = Instantiate(winEffect, transform.position, Quaternion.identity);
+            ParticleSystem ps = effect.GetComponent<ParticleSystem>();
+            if (ps != null)
+            {
+                var main = ps.main;
+                main.useUnscaledTime = true;  
+            }
+        }
+
+
+        Time.timeScale = 0f;
+        StartCoroutine(ReturnToMenuAfterDelay(7f));
+    }
+
+    private IEnumerator ReturnToMenuAfterDelay(float delay)
+    {
+        yield return new WaitForSecondsRealtime(delay);
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Menu");
     }
 }
