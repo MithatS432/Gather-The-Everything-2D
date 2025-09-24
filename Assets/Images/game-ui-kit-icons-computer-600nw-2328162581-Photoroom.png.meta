@@ -1,0 +1,442 @@
+fileFormatVersion: 2
+guid: 677c60efaf37b1e448b0bbbfbdf71adf
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -811620850977114734
+    second: game-ui-kit-icons-computer-600nw-2328162581-Photoroom_0
+  - first:
+      213: 2270563692612768846
+    second: game-ui-kit-icons-computer-600nw-2328162581-Photoroom_1
+  - first:
+      213: 7456011797809741016
+    second: game-ui-kit-icons-computer-600nw-2328162581-Photoroom_2
+  - first:
+      213: 7129752745215439346
+    second: game-ui-kit-icons-computer-600nw-2328162581-Photoroom_3
+  - first:
+      213: -6474554592940581097
+    second: game-ui-kit-icons-computer-600nw-2328162581-Photoroom_4
+  - first:
+      213: 7281245399155590915
+    second: game-ui-kit-icons-computer-600nw-2328162581-Photoroom_5
+  - first:
+      213: 4861474754370147241
+    second: game-ui-kit-icons-computer-600nw-2328162581-Photoroom_6
+  - first:
+      213: -6520495430501658093
+    second: game-ui-kit-icons-computer-600nw-2328162581-Photoroom_7
+  - first:
+      213: -5602731103807701595
+    second: game-ui-kit-icons-computer-600nw-2328162581-Photoroom_8
+  - first:
+      213: -328729335572089545
+    second: game-ui-kit-icons-computer-600nw-2328162581-Photoroom_9
+  - first:
+      213: 3259173542894056395
+    second: game-ui-kit-icons-computer-600nw-2328162581-Photoroom_10
+  - first:
+      213: -8467444679682548728
+    second: game-ui-kit-icons-computer-600nw-2328162581-Photoroom_11
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: game-ui-kit-icons-computer-600nw-2328162581-Photoroom_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 333
+        width: 113
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 295753dd22b8cb4f0800000000000000
+      internalID: -811620850977114734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game-ui-kit-icons-computer-600nw-2328162581-Photoroom_1
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 327
+        width: 103
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e44551206a9a28f10800000000000000
+      internalID: 2270563692612768846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game-ui-kit-icons-computer-600nw-2328162581-Photoroom_2
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 327
+        width: 109
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8dc3299f933197760800000000000000
+      internalID: 7456011797809741016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game-ui-kit-icons-computer-600nw-2328162581-Photoroom_3
+      rect:
+        serializedVersion: 2
+        x: 499
+        y: 327
+        width: 101
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f1bee2c858f1f260800000000000000
+      internalID: 7129752745215439346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game-ui-kit-icons-computer-600nw-2328162581-Photoroom_4
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 153
+        width: 98
+        height: 139
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71f17e0c6e2c526a0800000000000000
+      internalID: -6474554592940581097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game-ui-kit-icons-computer-600nw-2328162581-Photoroom_5
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 170
+        width: 97
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 307cd13ec1e2c0560800000000000000
+      internalID: 7281245399155590915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game-ui-kit-icons-computer-600nw-2328162581-Photoroom_6
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 167
+        width: 114
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a313ca288d677340800000000000000
+      internalID: 4861474754370147241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game-ui-kit-icons-computer-600nw-2328162581-Photoroom_7
+      rect:
+        serializedVersion: 2
+        x: 494
+        y: 159
+        width: 106
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3121469f3fb8285a0800000000000000
+      internalID: -6520495430501658093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game-ui-kit-icons-computer-600nw-2328162581-Photoroom_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2
+        width: 101
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ad7281eeb91f32b0800000000000000
+      internalID: -5602731103807701595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game-ui-kit-icons-computer-600nw-2328162581-Photoroom_9
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 4
+        width: 130
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 735b9f5396e107bf0800000000000000
+      internalID: -328729335572089545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game-ui-kit-icons-computer-600nw-2328162581-Photoroom_10
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 0
+        width: 93
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc33d85c119ea3d20800000000000000
+      internalID: 3259173542894056395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game-ui-kit-icons-computer-600nw-2328162581-Photoroom_11
+      rect:
+        serializedVersion: 2
+        x: 490
+        y: 13
+        width: 98
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80c10402de79d7a80800000000000000
+      internalID: -8467444679682548728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      game-ui-kit-icons-computer-600nw-2328162581-Photoroom_0: -811620850977114734
+      game-ui-kit-icons-computer-600nw-2328162581-Photoroom_1: 2270563692612768846
+      game-ui-kit-icons-computer-600nw-2328162581-Photoroom_10: 3259173542894056395
+      game-ui-kit-icons-computer-600nw-2328162581-Photoroom_11: -8467444679682548728
+      game-ui-kit-icons-computer-600nw-2328162581-Photoroom_2: 7456011797809741016
+      game-ui-kit-icons-computer-600nw-2328162581-Photoroom_3: 7129752745215439346
+      game-ui-kit-icons-computer-600nw-2328162581-Photoroom_4: -6474554592940581097
+      game-ui-kit-icons-computer-600nw-2328162581-Photoroom_5: 7281245399155590915
+      game-ui-kit-icons-computer-600nw-2328162581-Photoroom_6: 4861474754370147241
+      game-ui-kit-icons-computer-600nw-2328162581-Photoroom_7: -6520495430501658093
+      game-ui-kit-icons-computer-600nw-2328162581-Photoroom_8: -5602731103807701595
+      game-ui-kit-icons-computer-600nw-2328162581-Photoroom_9: -328729335572089545
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

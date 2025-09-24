@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class Player : MonoBehaviour
 {
@@ -8,7 +10,9 @@ public class Player : MonoBehaviour
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI fruitsText;
-    private float remainingTime = 5f;
+    public TextMeshProUGUI speedBoostText;
+    private bool isSpeedBoosted = false;
+    private float remainingTime = 60f;
     public int fruitsCollected = 10;
     public int newFruitsCollected;
     public Button restartButton;
@@ -18,6 +22,10 @@ public class Player : MonoBehaviour
     public AudioClip biggerSound;
     public Camera mainCamera;
     [SerializeField] private float speed;
+
+    private bool isGameOver = false;
+    private int speedBoostDuration = 3;
+
     void Start()
     {
         circle = GetComponent<Rigidbody2D>();
@@ -34,12 +42,14 @@ public class Player : MonoBehaviour
         else
         {
             timerText.text = "00:00";
+            if (!isGameOver)
+            {
+                GameOver();
+            }
         }
-        if (remainingTime <= 0)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            restartButton.gameObject.SetActive(true);
-            restartButton.onClick.AddListener(RestartGame);
-            Time.timeScale = 0f;
+            BoostSpeed();
         }
     }
 
@@ -53,7 +63,7 @@ public class Player : MonoBehaviour
     public void GetScore(int amount)
     {
         score += amount;
-        scoreText.text = "Score: " + score.ToString();
+        scoreText.text = "Score:" + score.ToString();
         fruitsCollected--;
         fruitsText.text = "" + fruitsCollected.ToString();
         if (fruitsCollected <= 0)
@@ -78,9 +88,34 @@ public class Player : MonoBehaviour
         GameObject biggerCircleInstance = Instantiate(biggercircle, transform.position, Quaternion.identity);
         Destroy(biggerCircleInstance, 0.5f);
     }
+    public void GameOver()
+    {
+        isGameOver = true;
+        restartButton.gameObject.SetActive(true);
+        restartButton.onClick.AddListener(RestartGame);
+        Time.timeScale = 0f;
+    }
     public void RestartGame()
     {
         Time.timeScale = 1f;
-        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    public void BoostSpeed()
+    {
+        if (speedBoostDuration > 0 && !isSpeedBoosted)
+        {
+            isSpeedBoosted = true;
+            speedBoostDuration--;
+            speedBoostText.text = "X" + speedBoostDuration.ToString();
+            StartCoroutine(SpeedBoostCoroutine());
+        }
+    }
+    private IEnumerator SpeedBoostCoroutine()
+    {
+        float originalSpeed = speed;
+        speed *= 2;
+        yield return new WaitForSeconds(3f);
+        speed = originalSpeed;
+        isSpeedBoosted = false;
     }
 }
