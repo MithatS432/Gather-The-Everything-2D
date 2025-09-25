@@ -7,6 +7,7 @@ TagManager:
   - Circle
   - Time
   - X2 Score
+  - Guard
   layers:
   - Default
   - TransparentFX

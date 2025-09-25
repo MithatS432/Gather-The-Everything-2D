@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI fruitsText;
     public TextMeshProUGUI speedBoostText;
+    public TextMeshProUGUI speedUseText;
     private bool isSpeedBoosted = false;
     private float remainingTime = 60f;
     public int fruitsCollected = 10;
@@ -33,6 +34,7 @@ public class Player : MonoBehaviour
     private bool isFirstSpeedBoost = true;
 
     private bool isDoubleScore = false;
+    private bool isTimeStopped = false;
 
     void Start()
     {
@@ -41,14 +43,14 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (remainingTime > 0)
+        if (!isTimeStopped && remainingTime > 0)
         {
             remainingTime -= Time.deltaTime;
             float minutes = Mathf.FloorToInt(remainingTime / 60);
             float seconds = Mathf.FloorToInt(remainingTime % 60);
             timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
         }
-        else
+        else if (remainingTime <= 0 && !isTimeStopped)
         {
             timerText.text = "00:00";
             if (!isGameOver)
@@ -68,6 +70,7 @@ public class Player : MonoBehaviour
         }
     }
 
+
     private void FixedUpdate()
     {
         float x = Input.GetAxis("Horizontal");
@@ -84,7 +87,7 @@ public class Player : MonoBehaviour
         score += amount;
         scoreText.text = "Score: " + score.ToString();
 
-        if (score >= 1000 && isFirstSpeedBoost)
+        if (score >= 500 && isFirstSpeedBoost)
         {
             isFirstSpeedBoost = false;
             speedBoostDuration += 3;
@@ -94,7 +97,7 @@ public class Player : MonoBehaviour
         fruitsCollected--;
         leftFruits--;
         fruitsText.text = "" + fruitsCollected.ToString();
-        leftFruitsText.text = "Left: " + leftFruits.ToString();
+        leftFruitsText.text = "Left:" + leftFruits.ToString();
 
         if (fruitsCollected <= 0)
         {
@@ -142,6 +145,7 @@ public class Player : MonoBehaviour
             isSpeedBoosted = true;
             speedBoostDuration--;
             speedBoostText.text = "X" + speedBoostDuration.ToString();
+            StartCoroutine(UseSpeedText());
             StartCoroutine(SpeedBoostCoroutine());
         }
     }
@@ -198,14 +202,32 @@ public class Player : MonoBehaviour
             StartCoroutine(ScoreBoostCoroutine());
             Destroy(other.gameObject);
         }
+        if (other.CompareTag("Guard"))
+        {
+            StartCoroutine(StopTime());
+            Destroy(other.gameObject);
+        }
     }
 
     private IEnumerator ScoreBoostCoroutine()
     {
         isDoubleScore = true;
-        scoreText.text = "DOUBLE SCORE!";
+        scoreText.text = "Score: " + score.ToString();
         yield return new WaitForSecondsRealtime(3f);
         isDoubleScore = false;
         scoreText.text = "Score: " + score.ToString();
+    }
+    private IEnumerator UseSpeedText()
+    {
+        speedUseText.gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        speedUseText.gameObject.SetActive(false);
+    }
+    private IEnumerator StopTime()
+    {
+        if (isTimeStopped) yield break;
+        isTimeStopped = true;
+        yield return new WaitForSecondsRealtime(3f);
+        isTimeStopped = false;
     }
 }
