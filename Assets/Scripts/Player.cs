@@ -30,11 +30,15 @@ public class Player : MonoBehaviour
     private bool isGameOver = false;
     private bool hasWon = false;
     private int speedBoostDuration = 3;
+    private bool isFirstSpeedBoost = true;
+
+    private bool isDoubleScore = false;
 
     void Start()
     {
         circle = GetComponent<Rigidbody2D>();
     }
+
     private void Update()
     {
         if (remainingTime > 0)
@@ -52,10 +56,12 @@ public class Player : MonoBehaviour
                 GameOver();
             }
         }
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             BoostSpeed();
         }
+
         if (leftFruits <= 0 && !hasWon)
         {
             TriggerWin();
@@ -69,14 +75,27 @@ public class Player : MonoBehaviour
         Vector2 movepos = new Vector2(x, y);
         transform.Translate(movepos * speed * Time.deltaTime);
     }
+
     public void GetScore(int amount)
     {
+        if (isDoubleScore)
+            amount *= 2;
+
         score += amount;
-        scoreText.text = "Score:" + score.ToString();
+        scoreText.text = "Score: " + score.ToString();
+
+        if (score >= 1000 && isFirstSpeedBoost)
+        {
+            isFirstSpeedBoost = false;
+            speedBoostDuration += 3;
+            speedBoostText.text = "X" + speedBoostDuration.ToString();
+        }
+
         fruitsCollected--;
         leftFruits--;
         fruitsText.text = "" + fruitsCollected.ToString();
-        leftFruitsText.text = "Left:" + leftFruits.ToString();
+        leftFruitsText.text = "Left: " + leftFruits.ToString();
+
         if (fruitsCollected <= 0)
         {
             remainingTime = 60f;
@@ -87,6 +106,7 @@ public class Player : MonoBehaviour
             GetBigger();
         }
     }
+
     public void GetBigger()
     {
         float growthFactor = 0.1f;
@@ -96,9 +116,11 @@ public class Player : MonoBehaviour
 
         if (biggerSound != null)
             AudioSource.PlayClipAtPoint(biggerSound, transform.position);
+
         GameObject biggerCircleInstance = Instantiate(biggercircle, transform.position, Quaternion.identity);
         Destroy(biggerCircleInstance, 0.5f);
     }
+
     public void GameOver()
     {
         isGameOver = true;
@@ -106,11 +128,13 @@ public class Player : MonoBehaviour
         restartButton.onClick.AddListener(RestartGame);
         Time.timeScale = 0f;
     }
+
     public void RestartGame()
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
     public void BoostSpeed()
     {
         if (speedBoostDuration > 0 && !isSpeedBoosted)
@@ -121,6 +145,7 @@ public class Player : MonoBehaviour
             StartCoroutine(SpeedBoostCoroutine());
         }
     }
+
     private IEnumerator SpeedBoostCoroutine()
     {
         float originalSpeed = speed;
@@ -129,6 +154,7 @@ public class Player : MonoBehaviour
         speed = originalSpeed;
         isSpeedBoosted = false;
     }
+
     void TriggerWin()
     {
         hasWon = true;
@@ -143,13 +169,12 @@ public class Player : MonoBehaviour
             if (ps != null)
             {
                 var main = ps.main;
-                main.useUnscaledTime = true;  
+                main.useUnscaledTime = true;
             }
         }
 
-
         Time.timeScale = 0f;
-        StartCoroutine(ReturnToMenuAfterDelay(7f));
+        StartCoroutine(ReturnToMenuAfterDelay(5f));
     }
 
     private IEnumerator ReturnToMenuAfterDelay(float delay)
@@ -157,5 +182,30 @@ public class Player : MonoBehaviour
         yield return new WaitForSecondsRealtime(delay);
         Time.timeScale = 1f;
         SceneManager.LoadScene("Menu");
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Time"))
+        {
+            remainingTime += 10f;
+            AudioSource.PlayClipAtPoint(biggerSound, transform.position);
+            Destroy(other.gameObject);
+        }
+
+        if (other.CompareTag("X2 Score"))
+        {
+            StartCoroutine(ScoreBoostCoroutine());
+            Destroy(other.gameObject);
+        }
+    }
+
+    private IEnumerator ScoreBoostCoroutine()
+    {
+        isDoubleScore = true;
+        scoreText.text = "DOUBLE SCORE!";
+        yield return new WaitForSecondsRealtime(3f);
+        isDoubleScore = false;
+        scoreText.text = "Score: " + score.ToString();
     }
 }
